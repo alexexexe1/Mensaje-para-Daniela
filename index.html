@@ -42,15 +42,19 @@
     }
 
     .mensaje-box {
-      max-width: 700px;
-      font-size: 1.2rem;
-      line-height: 1.6;
-      text-align: center;
-      white-space: pre-wrap; /* permite saltos de línea */
-      word-wrap: break-word;
-      border-right: 3px solid #fff;
-      display: inline-block;
-    }
+  max-width: 700px;
+  max-height: 40vh; /* 40% de la altura de la pantalla */
+  font-size: 1.2rem;
+  line-height: 1.6;
+  text-align: center;
+  white-space: pre-wrap; 
+  word-wrap: break-word;
+  border-right: 3px solid #fff;
+  display: inline-block;
+  overflow-y: auto; /* scroll vertical si se pasa */
+  padding: 10px; /* un poco de espacio adentro */
+}
+
 
     .heart {
       position: absolute;
