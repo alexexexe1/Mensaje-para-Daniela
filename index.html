@@ -1,42 +1,128 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <title>Floder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para ti 💌</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .foto {
+      width: 300px;
+      height: 300px;
+      border-radius: 15px;
+      object-fit: cover;
+      border: 3px solid #fff;
+      margin: 15px 0;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    /* Contenedor del mensaje con scroll independiente */
+    .mensaje-box {
+      width: 90%;
+      max-width: 700px;
+      max-height: 300px; /* altura fija visible */
+      overflow-y: auto;   /* scroll vertical */
+      padding: 10px;
+      border-right: 3px solid #fff;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+      text-align: center;
+      background: rgba(0,0,0,0.2); /* opcional: que contraste */
+      border-radius: 10px;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -10px;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: floatUp 5s linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before { top: -10px; left: 0; }
+    .heart::after { left: 10px; top: 0; }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(45deg); opacity: 0.8; }
+      100% { transform: translateY(-110vh) rotate(45deg); opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-    <form action="html" method="get">
-        <!-- -->
-        <label for="Nombre">Nombre</label>
-        <input type="text" id="Nombre" name="Nombre" placeholder="Escribe tu nombre" />
-        <br>
-        <label for="Apellido">Apellido</label>
-        <!--value se refiere a valor por defecto-->
-        <input type="text" id="Apellido" name="Apellido" placeholder="Escribe tu apellido" />
-        <br>
-        <textarea cols="50" rows="10" name="Comentario" id="Comentario" placeholder="Pon tu comentario"></textarea>
-        <br>
-        <button type="button"> Botón</button>
-        <button type="submit">submit</button>
-        <button type="reset">resetear</button>
-        <!--input tiene varios tipos de entrada, submit para presionar, text para ingresar un texto, password, checkbox, radio, file, etc-->
-    </form>
-    <h1>¿Cómo se ve esto?</h1>
-    <h2>Esto es menos grande muajajaja</h2>
-    <h3>Y esto más pequeño</h3>
-    <h4>Chanchito feliz</h4>
-    <h5>Chanchito tiste</h5>
-    <!--hr es una separación-->
-    <hr>
-    <p>Párrafo a <span style="color:blue">que quiero</span><br>colocar
-        <!--el br es un salto de línea-->
-    </p>
-    <p>Nueva línea</p>
-    <a target="_blank" href="https://es.wikipedia.org/wiki/Wikipedia:Portada">Ir a wikipedia</a>
-    <br>
-    <!--a es para referenciar una web y blank es para abrir la web en una nueva pestaña-->
-    <img src="img\2024-08-19_00.46.54.jpg" height="300" width="250"/>
-    <h2>Santp el que lea esto</h2>
-    <!--Comentarios para programadores-->
 
+  <h1>💖 Hola, Danielaaa 💖</h1>
+  <img src="foto.jpg" alt="Foto" class="foto">
+  <div class="mensaje-box" id="mensaje"></div>
+
+  <script>
+    // Corazones flotando
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 500);
+
+    // Mensaje largo con escritura poco a poco
+    const mensajeTexto = `Namas queria decirte que... 
+Eres el amor de mi vida, lo que siempre pedí sin darme cuenta, todo lo que buscaba inconscientemente. 
+Eres lo que siempre soñé en una mujer, tal cual eres tu, neta que me gustas aca un chingo más que las tortillas de harina. 
+Y definitivamente quiero algo bonito contigo, muak. 
+Solo para recordarte lo especial que eres para mi y que siempre estaré con el corazón en la mano para podertelo entregar cada que lo quieras ver, tocar, sentir, y saber cuánto es que te quiero.`;
+
+    const mensajeDiv = document.getElementById("mensaje");
+    let i = 0;
+    const velocidad = 60; // velocidad de escritura
+
+    function escribir() {
+      if (i < mensajeTexto.length) {
+        mensajeDiv.innerHTML += mensajeTexto.charAt(i);
+        i++;
+        setTimeout(escribir, velocidad);
+      }
+    }
+
+    window.onload = escribir;
+  </script>
+  <h2>Con amor… Alejandro</h2>
+  <h3>Watajai</h3>
 </body>
 </html>
